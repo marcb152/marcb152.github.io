@@ -4,17 +4,17 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Engineering student',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        I&apos;m an Engineer specialized in embedded software development & in video-games,
+        passionate by tech with a scientific background.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: '.NET & video-games developper',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
@@ -24,7 +24,7 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Linux & open-source enthousiast',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
