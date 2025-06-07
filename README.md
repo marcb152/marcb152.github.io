@@ -32,6 +32,8 @@ Using SSH:
 $ USE_SSH=true yarn deploy
 ```
 
+In case it asks for an additionnal ssh-askpass, I add `SSH_ASKPASS=/usr/lib/ssh/gnome-ssh-askpass3` in front of the command.
+
 Not using SSH:
 
 ```
