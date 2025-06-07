@@ -139,7 +139,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Marc\'s Website, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Marc\'s Website – Licensed under AGPL-3.0 – Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
