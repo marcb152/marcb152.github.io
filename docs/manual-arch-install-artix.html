@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-Artix Dinit Installation on hardware" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Manual Arch install guide | Marc&#x27;s website</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://marcb152.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://marcb152.github.io/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://marcb152.github.io/docs/manual-arch-install-artix"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Manual Arch install guide | Marc&#x27;s website"><meta data-rh="true" name="description" content="Step by step guide on installing Artix with dinit, an arch-based, systemd-free distro, full manual install"><meta data-rh="true" property="og:description" content="Step by step guide on installing Artix with dinit, an arch-based, systemd-free distro, full manual install"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://marcb152.github.io/docs/manual-arch-install-artix"><link data-rh="true" rel="alternate" href="https://marcb152.github.io/docs/manual-arch-install-artix" hreflang="en"><link data-rh="true" rel="alternate" href="https://marcb152.github.io/docs/manual-arch-install-artix" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Manual Arch install guide","item":"https://marcb152.github.io/docs/manual-arch-install-artix"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Marc&#39;s website RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Marc&#39;s website Atom Feed"><link rel="stylesheet" href="/assets/css/styles.c1616bba.css">
+<script src="/assets/js/runtime~main.c1777f9f.js" defer="defer"></script>
+<script src="/assets/js/main.1f755e95.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">My Site</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro">Tutorial</a><a class="navbar__item navbar__link" href="/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/marcb152/marcb152.github.io" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro"><span title="Tutorial Intro" class="linkLabel_WmDU">Tutorial Intro</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/category/tutorial---basics"><span title="Tutorial - Basics" class="categoryLinkLabel_W154">Tutorial - Basics</span></a><button aria-label="Expand sidebar category &#x27;Tutorial - Basics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/docs/category/tutorial---extras"><span title="Tutorial - Extras" class="categoryLinkLabel_W154">Tutorial - Extras</span></a><button aria-label="Expand sidebar category &#x27;Tutorial - Extras&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/manual-arch-install-artix"><span title="Manual Arch install guide" class="linkLabel_WmDU">Manual Arch install guide</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/git-quick-start"><span title="Git quick start" class="linkLabel_WmDU">Git quick start</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/office-install-arch-linux"><span title="Installing Office on Arch" class="linkLabel_WmDU">Installing Office on Arch</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Manual Arch install guide</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Manual Arch install guide</h1></header><h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="part-i---partitions">Part I - Partitions<a href="#part-i---partitions" class="hash-link" aria-label="Direct link to Part I - Partitions" title="Direct link to Part I - Partitions" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="a-booting">A. Booting<a href="#a-booting" class="hash-link" aria-label="Direct link to A. Booting" title="Direct link to A. Booting" translate="no">​</a></h3>
+<ol>
+<li class="">Choose an initsystem :<!-- -->
+<ol>
+<li class="">OpenRC --&gt; old + lots of documentation</li>
+<li class="">Runit --&gt; newer with good docs (Théo uses it)</li>
+<li class="">Dinit --&gt; newer than runit, still not documented enough (I use it)</li>
+<li class="">S6 --&gt; idk</li>
+</ol>
+</li>
+<li class="">Download the base ISO</li>
+<li class="">If you use a VM, enable EFI</li>
+<li class=""><strong>If you have trouble booting the ISO, install Ventoy and boot in grub2 mode</strong></li>
+<li class="">Start the computer</li>
+<li class="">Configure Artix with the correct locale/language/keyboard layout</li>
+<li class="">Enter the edit console<!-- -->
+<ol>
+<li class="">Type <code>video=1980x1080</code> to setup an appropriate resolution in the VM</li>
+</ol>
+</li>
+<li class="">Boot into artix<!-- -->
+<ol>
+<li class="">user <code>artix</code></li>
+<li class="">passwd <code>artix</code></li>
+<li class=""><code>sudo su</code></li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="b-creating-partitions">B. Creating partitions<a href="#b-creating-partitions" class="hash-link" aria-label="Direct link to B. Creating partitions" title="Direct link to B. Creating partitions" translate="no">​</a></h3>
+<ol>
+<li class="">If keyboard isn&#x27;t set correctly <code>loadkeys fr</code></li>
+<li class="">Download &amp; set the font<!-- -->
+<ol>
+<li class=""><code>pacman -Sy terminus-font</code></li>
+<li class="">Set <strong>big</strong> font <code>setfont ter-128n</code></li>
+<li class="">(set less bigger font <code>setfont ter-d24b</code>)</li>
+</ol>
+</li>
+<li class="">Setup partitions using <code>cfdisk</code> (<code>gpt</code> file system)<!-- -->
+<ol>
+<li class="">First must be EFI of size between 100M and 512M</li>
+<li class="">Then root partition</li>
+<li class="">Then home partition (optional)</li>
+<li class="">Then swap partition (optional if no hibernation)</li>
+</ol>
+</li>
+<li class="">See created partitions using <code>lsblk</code></li>
+<li class="">Format the partitions (-L to set a label)<!-- -->
+<ol>
+<li class="">EFI <code>mkfs.fat -F32 /dev/sda1</code> and <code>fatlabel /dev/sda1 ESP</code></li>
+<li class="">Root <code>mkfs.ext4 -L ROOT /dev/sda2</code></li>
+<li class="">Home <code>mkfs.ext4  -L HOME /dev/sda3</code></li>
+<li class="">Swap <code>mkswap -L SWAP /dev/sda4</code></li>
+</ol>
+</li>
+<li class="">Mount the partitions (swap first, then root, finally boot and home)<!-- -->
+<ol>
+<li class=""><code>swapon /dev/disk/by-label/SWAP</code> OR <code>swapon /dev/sda4</code></li>
+<li class=""><code>mount /dev/sda2 /mnt</code></li>
+<li class=""><code>mkdir -p mnt/boot/efi</code> (if the fs is encrypted, do not create <code>/efi</code>)</li>
+<li class=""><code>mount /dev/sda1 /mnt/boot/efi</code></li>
+<li class=""><code>mkdir -p mnt/home</code></li>
+<li class=""><code>mount /dev/sda3 /mnt/home</code></li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>[!WARNING]
+The order matters!!</p>
+</blockquote>
+<ol start="6">
+<li class="">Check with <code>lsblk</code></li>
+<li class="">Sync the system clock <code>dinitctl start ntpd</code></li>
+<li class="">Install the system with interactive mode (-i) <code>basestrap -i /mnt base base-devel linux-zen linux-zen-headers linux-firmware dinit btop vim neovim man-db elogind seatd seatd-dinit intel-ucode grub os-prober efibootmgr networkmanager networkmanager-dinit bash-completion fastfetch</code> (approx 280 packages)</li>
+<li class="">Setup fstab <code>fstabgen -U /mnt &gt;&gt; /mnt/etc/fstab</code></li>
+<li class="">Check generated fstab <code>cat /mnt/etc/fstab</code></li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="part-ii---chroot">Part II - chroot<a href="#part-ii---chroot" class="hash-link" aria-label="Direct link to Part II - chroot" title="Direct link to Part II - chroot" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="a-various-configuration">A. Various configuration<a href="#a-various-configuration" class="hash-link" aria-label="Direct link to A. Various configuration" title="Direct link to A. Various configuration" translate="no">​</a></h3>
+<ol>
+<li class="">chroot inside the installed system <code>artix-chroot /mnt</code></li>
+<li class="">Update repos with <code>pacman -Sy</code></li>
+<li class="">Setup timezone <code>ln -sf /usr/share/zoneinfo/Region/City /etc/localtime</code>
+<ol>
+<li class="">For instance, <code>ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime</code></li>
+</ol>
+</li>
+<li class="">Setup hwclock <code>hwclock --systohc</code></li>
+<li class="">Uncomment the locale you want to keep in <code>nvim /etc/locale.gen</code> (recommended US UTF-8)</li>
+<li class="">Generate the locale <code>locale-gen</code></li>
+<li class="">Edit <code>locale.conf</code> with <code>nvim /etc/locale.conf</code>
+<ol>
+<li class="">Enter <code>LANG=en_US.UTF-8</code></li>
+</ol>
+</li>
+<li class="">Network config<!-- -->
+<ol>
+<li class=""><code>nvim /etc/hostname</code> and enter your host name (aka computer name)</li>
+<li class=""><code>nvim /etc/hosts</code>
+<ol>
+<li class=""><code>127.0.0.1    localhost</code></li>
+<li class=""><code>::1          localhost</code></li>
+<li class=""><code>127.0.1.1    HOSTNAME.localdomain    HOSTNAME</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">Install terminus font (in the installed env) <code>pacman -S terminus-font</code></li>
+<li class="">Configure console<!-- -->
+<ol>
+<li class=""><code>nvim /etc/vconsole.conf</code></li>
+<li class="">Enter <code>FONT=ter-d24b</code></li>
+<li class="">Enter <code>KEYMAP=fr</code></li>
+</ol>
+</li>
+<li class="">Setup users and passwords<!-- -->
+<ol>
+<li class="">Setup current session (root) password <code>passwd</code></li>
+<li class="">Add user <code>useradd -mG wheel user</code></li>
+<li class="">Setup user password <code>passwd user</code></li>
+<li class="">Make user a sudoer <code>EDITOR=nvim visudo</code>
+<ol>
+<li class="">Uncomment <code>%wheel ALL=(ALL:ALL) ALL</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="">Setup autologin<!-- -->
+<ol>
+<li class=""><code>nvim /etc/dinit.d/tty1</code></li>
+<li class="">Add flag <code>--autologin user</code> before <code>tty1</code> in the <code>command=</code> line</li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="b-grub">B. Grub<a href="#b-grub" class="hash-link" aria-label="Direct link to B. Grub" title="Direct link to B. Grub" translate="no">​</a></h3>
+<ol>
+<li class="">Setup the correct resolution <code>nvim /etc/default/grub</code> and add <code>video=&quot;1920x1080&quot;</code> at the end of line <code>GRUB_CMDLINE_LINUX_DEFAULT=&quot;loglevel=3 quiet&quot;</code></li>
+<li class="">Edit <code>GRUB_GFXMODE=1920x1080</code> as well</li>
+<li class="">Uncomment <code>GRUB_DISABLE_OS_PROBER=false</code> to detect other installed OS (for windows, see <a href="https://wiki.archlinux.org/title/GRUB#GUID_Partition_Table_%28GPT%29_specific_instructions" target="_blank" rel="noopener noreferrer" class="">the arch wiki: grub</a>)</li>
+<li class="">Mount the other OS in read-only (to detect other installed OS)<!-- -->
+<ol>
+<li class=""><code>mkdir -p /mnt/foo</code></li>
+<li class=""><code>mount -o ro /dev/sda5 /mnt/foo</code></li>
+<li class="">If the other installed Linux enters rescue mode at launch, update its <code>/etc/fstab</code> file to remove the line of the old EFI partition UUID</li>
+</ol>
+</li>
+<li class="">Install for UEFI <code>grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB</code></li>
+<li class=""><code>grub-mkconfig -o /boot/grub/grub.cfg</code></li>
+<li class=""><a href="https://wiki.archlinux.org/title/GRUB#Boot_menu_entry_examples" target="_blank" rel="noopener noreferrer" class="">You can add custom grub entries</a> in <code>/boot/grub/custom.cfg</code> (for instance, shutdown or reboot)</li>
+<li class="">Reboot the system<!-- -->
+<ol>
+<li class="">Exit chroot <code>exit</code></li>
+<li class="">Unmount all partitions <code>umount -R /mnt</code></li>
+<li class=""><code>reboot</code></li>
+</ol>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="part-iii---ui">Part III - UI<a href="#part-iii---ui" class="hash-link" aria-label="Direct link to Part III - UI" title="Direct link to Part III - UI" translate="no">​</a></h2>
+<blockquote>
+<p>[!WARNING]
+Now, you may need to add sudo in front of most commands since you are no longer chroot&#x27;ed</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="last-details">Last details<a href="#last-details" class="hash-link" aria-label="Direct link to Last details" title="Direct link to Last details" translate="no">​</a></h3>
+<ol>
+<li class="">Enable network connection<!-- -->
+<ol>
+<li class=""><code>dinitctl enable NetworkManager</code> (be cautious of the uppercase letters)</li>
+</ol>
+</li>
+<li class="">Enable seatd<!-- -->
+<ol>
+<li class=""><code>dinitctl enable seatd</code></li>
+<li class="">Add user to group seat to allow them to start processes <code>usermod -aG seat &lt;user&gt;</code></li>
+<li class="">Add user to group video (and group audio) <code>usermod -aG video &lt;user&gt;</code></li>
+</ol>
+</li>
+<li class="">Enable ssh for remote control (if needed)</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="a-additional-arch-repos--yay">A. Additional Arch repos &amp; yay<a href="#a-additional-arch-repos--yay" class="hash-link" aria-label="Direct link to A. Additional Arch repos &amp; yay" title="Direct link to A. Additional Arch repos &amp; yay" translate="no">​</a></h3>
+<ol>
+<li class="">Enable Arch repos<!-- -->
+<ol>
+<li class=""><code>sudo pacman -Sy artix-archlinux-support</code></li>
+<li class=""><code>sudo pacman-key --populate archlinux</code></li>
+<li class=""><code>sudo pacman -S archlinux-mirrorlist</code></li>
+<li class=""><code>sudo nvim /etc/pacman.conf</code>
+<code># Arch</code>
+<code>[extra]</code>
+<code>Include = /etc/pacman.d/mirrorlist-arch</code>
+<code>[multilib]</code>
+<code>Include = /etc/pacman.d/mirrorlist-arch</code></li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>[!NOTE]
+All <em>Universe</em> packages have been moved to <em>Galaxy</em> according to the <a href="https://wiki.artixlinux.org/Main/Repositories#Arch_repositories" target="_blank" rel="noopener noreferrer" class="">Artix wiki</a></p>
+</blockquote>
+<ol start="5">
+<li class="">sudo pacman -Sy</li>
+<li class="">Install yay<!-- -->
+<ol>
+<li class="">Setup dependencies <code>pacman -S --needed git base-devel</code></li>
+<li class="">Clone the git <code>git clone https://aur.archlinux.org/yay-bin.git</code></li>
+<li class=""><code>cd yay-bin</code></li>
+<li class="">Make <code>makepkg -si</code></li>
+<li class="">(Next steps are not mandatory, works without)</li>
+<li class="">Scan for packages installed without yay <code>yay -Y --gendb</code></li>
+<li class="">Check for installed package updates <code>yay -Syu --devel</code></li>
+<li class="">Permanently check for dev updates <code>yay -Y --devel --save</code></li>
+<li class="">Remove the unnecessary folder <code>cd ..</code> and <code>rm -rf yay-bin/</code></li>
+</ol>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="b-installing-useful-stuff">B. Installing useful stuff<a href="#b-installing-useful-stuff" class="hash-link" aria-label="Direct link to B. Installing useful stuff" title="Direct link to B. Installing useful stuff" translate="no">​</a></h3>
+<blockquote>
+<p>[!TIP]
+<a href="https://github.com/hyprland-community/awesome-hyprland" target="_blank" rel="noopener noreferrer" class="">Awesome Hyprland</a>
+<a href="https://github.com/rcalixte/awesome-wayland" target="_blank" rel="noopener noreferrer" class="">Awesome Wayland</a>
+<a href="https://github.com/solarkraft/awesome-wlroots" target="_blank" rel="noopener noreferrer" class="">Awesome wlroots</a>
+<a href="https://wiki.hyprland.org/Useful-Utilities/Must-have/" target="_blank" rel="noopener noreferrer" class="">Hyprland Wiki - Must have</a></p>
+</blockquote>
+<ol>
+<li class="">Install fastfetch <code>pacman -S fastfetch</code>
+<ol>
+<li class="">fastfetch</li>
+<li class="">hyfetch</li>
+</ol>
+</li>
+<li class="">Install Hyprland <code>yay -S hyprland</code>
+<ol>
+<li class="">Hyprland (dynamic tiling WM) <a href="https://wiki.hyprland.org/Getting-Started/Master-Tutorial/" target="_blank" rel="noopener noreferrer" class="">Hyprland wiki - Master tutorial</a></li>
+<li class="">Sway (manual tiling WM)</li>
+</ol>
+</li>
+<li class="">Install a file manager (GUI) <code>pacman -S thunar</code>
+<ol>
+<li class="">Dolphin (KDE)</li>
+<li class="">Thunar (XFCE)</li>
+<li class="">Nemo (Mint)</li>
+<li class="">Nautilus (GNOME)</li>
+<li class="">PCManFM (LXDE)</li>
+<li class="">
+<ul>
+<li class="">plugins for all of them (if needed)</li>
+</ul>
+</li>
+</ol>
+</li>
+<li class="">Install a file manager (CLI, if needed) <code>pacman -S nnn</code>
+<ol>
+<li class="">nnn</li>
+<li class="">Ranger</li>
+<li class="">vifm</li>
+</ol>
+</li>
+<li class="">Install a launcher (<a href="https://mark.stosberg.com/fuzzel-a-great-dmenu-and-rofi-altenrative-for-wayland/" target="_blank" rel="noopener noreferrer" class="">see</a>) <code>pacman -S rofi-wayland</code>
+<ol>
+<li class="">Rofi-wayland</li>
+<li class="">Wofi</li>
+<li class="">Fuzzel</li>
+<li class="">bemenu</li>
+<li class="">dmenu-wl</li>
+<li class="">yofi</li>
+</ol>
+</li>
+<li class="">Install a wallpaper <code>yay -S hyprpaper</code></li>
+<li class="">Install a terminal emulator <code>pacman -S kitty</code>
+<ol>
+<li class="">Kitty</li>
+<li class="">Alacritty</li>
+<li class="">Foot</li>
+</ol>
+</li>
+<li class="">Install fish <code>pacman -S fish</code>
+<ol>
+<li class="">Edit hyprland&#x27;s config to launch kitty terminal emulator by default</li>
+<li class="">Edit kitty&#x27;s config to launch on fish by default</li>
+</ol>
+</li>
+<li class="">Install a clipboard manager <code>pacman -S cliphist wl-clipboard wl-clip-persist</code>
+1.</li>
+<li class="">Install Flatpak for even more apps <code>pacman -S flatpak</code> (Proton-QT is packed inside)</li>
+</ol>
+<blockquote>
+<p>[!WARNING]
+Flatpak requires a working xdg-portal, install <code>xdg-desktop-portal</code> ; <code>xdg-desktop-portal-hyprland</code> needs to be installed as well.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="c-configuring-hyprland">C. Configuring Hyprland<a href="#c-configuring-hyprland" class="hash-link" aria-label="Direct link to C. Configuring Hyprland" title="Direct link to C. Configuring Hyprland" translate="no">​</a></h3>
+<blockquote>
+<p>[!WARNING]
+<strong>OUTDATED SECTION</strong></p>
+</blockquote>
+<ol>
+<li class="">Create a startup script (to set up additional env variables, can be set up in /etc/environment or in your .profile or .bash_profile)<!-- -->
+<ol>
+<li class=""><code>nvim starthypr.sh</code></li>
+<li class=""><code>#!/bin/sh</code></li>
+<li class=""><code>export WLR_NO_HARDWARE_CURSORS=1</code></li>
+<li class=""><code>export WLR_RENDERER_ALLOW_SOFTWARE=1</code></li>
+<li class=""><code>export XDG_SESSION_DESKTOP=Hyprland</code></li>
+<li class="">`export XDG_CURRENT_DESKTOP=Hyprland</li>
+<li class=""><code>export XDG_SESSION_TYPE=wayland</code></li>
+<li class=""><code>export HYPRLAND_LOG_WLR=1</code></li>
+<li class=""><code>export LIBGL_ALWAYS_SOFTWARE=1</code></li>
+<li class=""><code>export LIBSEAT_BACKEND=seatd</code></li>
+<li class=""><code>exec dbus-run-session Hyprland</code></li>
+<li class=""><code>chmod +x starthypr.sh</code></li>
+</ol>
+</li>
+<li class="">Configure it or download dotfiles/scripts/rices</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="part-iv---tips--tricks">Part IV - Tips &amp; tricks<a href="#part-iv---tips--tricks" class="hash-link" aria-label="Direct link to Part IV - Tips &amp; tricks" title="Direct link to Part IV - Tips &amp; tricks" translate="no">​</a></h2>
+<ul>
+<li class="">Edit .desktop files of installed apps that doesn&#x27;t start and edit <code>Exec = dbus-run-session program</code> instead of <code>Exec = program</code> (after having copied them to <code>~/.local/share/applications</code>)</li>
+<li class="">AppImage can be detected and started in rofi if you create a .desktop entry for them in <code>~/.local/share/applications</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="references">References<a href="#references" class="hash-link" aria-label="Direct link to References" title="Direct link to References" translate="no">​</a></h2>
+<ul>
+<li class="">Artix full install tutorial with dinit: <a href="https://youtu.be/zfHkmhEamlc" target="_blank" rel="noopener noreferrer" class="">https://youtu.be/zfHkmhEamlc</a></li>
+<li class="">Artix full install tutorial with runit: <a href="https://youtu.be/mIpZA6z-Ctk" target="_blank" rel="noopener noreferrer" class="">https://youtu.be/mIpZA6z-Ctk</a></li>
+<li class="">Artix install blog: <a href="https://cheatsheets.stephane.plus/distros/arch-based/artix_installation/" target="_blank" rel="noopener noreferrer" class="">https://cheatsheets.stephane.plus/distros/arch-based/artix_installation/</a></li>
+<li class="">Artix install wiki: <a href="https://wiki.artixlinux.org/Main/Installation" target="_blank" rel="noopener noreferrer" class="">https://wiki.artixlinux.org/Main/Installation</a></li>
+<li class="">Arch wiki, grub config: <a href="https://wiki.archlinux.org/title/GRUB" target="_blank" rel="noopener noreferrer" class="">https://wiki.archlinux.org/title/GRUB</a></li>
+<li class="">Hyprland full install tutorial: <a href="https://youtu.be/V7nP-To0630" target="_blank" rel="noopener noreferrer" class="">https://youtu.be/V7nP-To0630</a></li>
+<li class="">Awesome Wayland: <a href="https://github.com/rcalixte/awesome-wayland" target="_blank" rel="noopener noreferrer" class="">https://github.com/rcalixte/awesome-wayland</a></li>
+<li class="">Awesome wlroots: <a href="https://github.com/solarkraft/awesome-wlroots" target="_blank" rel="noopener noreferrer" class="">https://github.com/solarkraft/awesome-wlroots</a></li>
+<li class="">Hyprland dots: <a href="https://github.com/prasanthrangan/hyprdots" target="_blank" rel="noopener noreferrer" class="">https://github.com/prasanthrangan/hyprdots</a> &amp;&amp; <a href="https://github.com/end-4/dots-hyprland" target="_blank" rel="noopener noreferrer" class="">https://github.com/end-4/dots-hyprland</a> &amp;&amp; <a href="https://github.com/linkfrg/dotfiles/wiki/Installation" target="_blank" rel="noopener noreferrer" class="">https://github.com/linkfrg/dotfiles/wiki/Installation</a></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-tags-row"><div class="col"><b>Tags:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/docs/tags/linux">Linux</a></li><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/docs/tags/arch">Arch</a></li></ul></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/tutorial-extras/translate-your-site"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Translate your site</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/git-quick-start"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Git quick start</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#part-i---partitions" class="table-of-contents__link toc-highlight">Part I - Partitions</a><ul><li><a href="#a-booting" class="table-of-contents__link toc-highlight">A. Booting</a></li><li><a href="#b-creating-partitions" class="table-of-contents__link toc-highlight">B. Creating partitions</a></li></ul></li><li><a href="#part-ii---chroot" class="table-of-contents__link toc-highlight">Part II - chroot</a><ul><li><a href="#a-various-configuration" class="table-of-contents__link toc-highlight">A. Various configuration</a></li><li><a href="#b-grub" class="table-of-contents__link toc-highlight">B. Grub</a></li></ul></li><li><a href="#part-iii---ui" class="table-of-contents__link toc-highlight">Part III - UI</a><ul><li><a href="#last-details" class="table-of-contents__link toc-highlight">Last details</a></li><li><a href="#a-additional-arch-repos--yay" class="table-of-contents__link toc-highlight">A. Additional Arch repos &amp; yay</a></li><li><a href="#b-installing-useful-stuff" class="table-of-contents__link toc-highlight">B. Installing useful stuff</a></li><li><a href="#c-configuring-hyprland" class="table-of-contents__link toc-highlight">C. Configuring Hyprland</a></li></ul></li><li><a href="#part-iv---tips--tricks" class="table-of-contents__link toc-highlight">Part IV - Tips &amp; tricks</a></li><li><a href="#references" class="table-of-contents__link toc-highlight">References</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Tutorial</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discordapp.com/invite/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://twitter.com/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Marc's Website – Licensed under AGPL-3.0 – Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

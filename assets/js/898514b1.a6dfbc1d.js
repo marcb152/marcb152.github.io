@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkmarcb_152_github_io=globalThis.webpackChunkmarcb_152_github_io||[]).push([[9067],{9187:a=>{a.exports=JSON.parse('{"tags":[{"label":"Linux","permalink":"/docs/tags/linux","count":2},{"label":"Arch","permalink":"/docs/tags/arch","count":1},{"label":"Git","permalink":"/docs/tags/git","count":1}]}')}}]);
